@@ -74,11 +74,13 @@ main {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  border: 0;
   z-index: 1;
   scale: 1.3;
+  transition: all 100ms ease;
 }
 
-.game-button::after {
+.game-button::after, .center-button::after  {
   content: "";
   position: absolute;
   width: inherit;
@@ -89,18 +91,21 @@ main {
   transition: opacity 100ms ease;
 }
 
-.game-button.lit::after {
+.game-button.lit, #center-button.lit {
+  scale: 1.25;
+}
+.game-button.lit::after, #center-button.lit::after {
   opacity: 1;
 }
 
-#north {
+#north-button {
   transform-origin: top;
   background-color: red;
   grid-row-start: 1;
   grid-column-start: 2;
 }
 
-#west {
+#west-button {
   transform-origin: left;
   background-color: blue;
   grid-row-start: 2;
@@ -111,27 +116,23 @@ main {
   position: relative;
   transform-origin: center;
   background-color: purple;
-  border: 0.6rem solid;
+  border: calc(var(--game-panel-width) / 36) solid;
   border-color: var(--secondary-bg-color);
   grid-row-start: 2;
   grid-column-start: 2;
   border-radius: 50%;
-  scale: 1.25;
+  scale: 1.3;
   z-index: 5;
 }
 
-#east {
+#east-button {
   transform-origin: right;
   background-color: green;
   grid-row-start: 2;
   grid-column-start: 3;
 }
 
-.game-button#east::after {
-
-}
-
-#south {
+#south-button {
   transform-origin: bottom;
   background-color: yellow;
   grid-row-start: 3;
