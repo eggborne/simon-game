@@ -24,6 +24,7 @@ class Game {
         console.log('handler got', this.checkPlayerSequence())
         if (this.checkPlayerSequence()) {
           if (this.playerSequence.length === this.sequence.length) {
+            giveClassForDuration(`main`, `won`, 800);
             await this.displayMessage(`#game-message`, `ROUND CLEARED!`, 1200);
             await pause(500)
             await this.startTurn();
@@ -31,6 +32,7 @@ class Game {
             this.displayMessage(`#game-message`, `CORRECT`, 400);
           }
         } else {
+          giveClassForDuration(`main`, `lost`, 800);
           this.displayMessage(`#game-message`, `WRONG`);
           document.querySelector('main').classList.replace('waiting', 'demo');
           await pause(1600);
@@ -80,7 +82,7 @@ class Game {
       await giveClassForDuration(`#${step}-button`, `lit`, this.currentFlashSpeed);
       await pause(this.currentFlashSpeed);
     }
-    await pause(1000);
+    await pause(500);
     document.querySelector('main').classList.replace('demo', 'waiting');
     await pause(500);
     this.displayMessage(`#game-message`, `REPEAT THE SEQUENCE`, 1000);

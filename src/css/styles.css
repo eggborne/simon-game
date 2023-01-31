@@ -71,6 +71,14 @@ main.demo #game-area {
   transition: background-color 300ms ease;
 }
 
+main.won #game-area {
+  background-color: rgb(23, 97, 23) !important;
+}
+
+main.lost #game-area {
+  background-color: rgb(133, 26, 26) !important;
+}
+
 #game-message {
   position: absolute;
   top: calc(var(--header-height) / 2);
